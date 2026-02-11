@@ -10,4 +10,4 @@ Crie um arquivo **`index.html`** com as seguintes regras:
     - `<!DOCTYPE html>`
     - `<html>`, `<head>` e `<body>`
     - `<title>` com o texto **"Primeira Página"**
-    - Um `<h1>` com o texto **"aMinha Primeira Págin"**
+    - Um `<h1>` com o texto **"Minha Primeira Página"**
