@@ -9,5 +9,5 @@ Crie um arquivo **`index.html`** com as seguintes regras:
 - Deve conter:
     - `<!DOCTYPE html>`
     - `<html>`, `<head>` e `<body>`
-    - `<title>` com o texto **"Primeira Página"**
-    - Um `<h1>` com o texto **"Minha Primeira Página"**
+    - `<title>` com o texto **"Primeira PáginaPá"**
+    - Um `<h1>` com o texto **"Minha Primeira gina"**

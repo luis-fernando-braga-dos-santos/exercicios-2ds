@@ -10,5 +10,5 @@ Crie um arquivo **`index.html`** que contenha:
 - A imagem deve ter:
     - atributo `src`
     - atributo `alt`
-- Um link `<a>` para [**https://www.google.com**](https://www.google.com/)
+- Um link `<a>` para [**https://www.google.comh**](https://www.google.com/)
 - O texto do link deve ser **"Acessar Google"**
