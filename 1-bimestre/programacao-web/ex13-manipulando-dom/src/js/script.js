@@ -1,6 +1,6 @@
 const mensagem = document.getElementById("mensagem");
-const botao = document.getElementById("alterar");
+const alterar = document.getElementById("alterar");
 
-botao.addEventListener("click", function () {
-  mensagem.textContent = "Mensagem alterada com JavaScript";
+alterar.addEventListener("click", function() {
+    mensagem.textContent = "Mensagem alterada com JavaScript";
 });
