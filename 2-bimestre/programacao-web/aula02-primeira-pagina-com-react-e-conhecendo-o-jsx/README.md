@@ -112,6 +112,10 @@ export default function App() {
 - Pode usar `{}` para JavaScript
 - Deve ser válido
 
+Fim da aula!
+
+_
+
 # 📝 Atividade Rápida
 
 ## 🎯 Personalizando sua primeira página React
