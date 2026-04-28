@@ -64,13 +64,7 @@ Draw.io    = gratuito e prático
 
 # 🧩 Exemplo de arquitetura simples
 
-```
-[ Usuário ]
-    ↓
-[ Site ]
-    ↓
-[ Banco ]
-```
+![Exemplo de arquitetura simples](./src/example.jpg)
 
 Isso pode ser desenhado nas duas ferramentas.
 
