@@ -1,9 +1,9 @@
 export default function App(){
-  const MateriaFavorita = "Desenvolvimento de Sistemas"
+const filmeFavorito = "Homem Aranha"
   return(
       <div>
         <h1>Luis Fernando Braga dos Santos</h1>
-        <p>Minha materia favorita é: {MateriaFavorita}</p>
+        <p>Meu filme favorito é: {filmeFavorito}</p>
       </div>
   )
 }
