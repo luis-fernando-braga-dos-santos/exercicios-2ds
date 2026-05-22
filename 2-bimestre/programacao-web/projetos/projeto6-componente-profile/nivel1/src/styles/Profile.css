@@ -1,0 +1,13 @@
+.profile-card {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.imagem {
+  width: 150px;
+  height: 150px;
+}
+
+.profile-card h2, .profile-card p {
+  color: #000000;
+}
