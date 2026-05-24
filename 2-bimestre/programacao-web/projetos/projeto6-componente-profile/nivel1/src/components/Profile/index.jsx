@@ -1,4 +1,4 @@
-import '../../styles/Profile.css';
+import '../../styles/ProfileCSS.css';
 
 export default function Profile({ nome, idade, profissao, foto }) {
   return (
