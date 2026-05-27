@@ -1,17 +1,17 @@
-import { useState } from "react"
-import "./style.css"
+import { useState } from "react";
+import "./style.css";
 
 function FormularioMensagem() {
-  const [nome, setNome] = useState("")
-  const [mensagem, setMensagem] = useState("")
+  const [nome, setNome] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   function enviarMensagem(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     alert(`
 Nome: ${nome}
 Mensagem: ${mensagem}
-    `)
+    `);
   }
 
   return (
@@ -29,9 +29,11 @@ Mensagem: ${mensagem}
         onChange={(e) => setMensagem(e.target.value)}
       />
 
-      <button type="submit">Enviar Mensagem</button>
+      <button type="submit">
+        Enviar Mensagem
+      </button>
     </form>
-  )
+  );
 }
 
-export default FormularioMensagem
+export default FormularioMensagem;

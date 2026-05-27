@@ -7,9 +7,17 @@
 .formulario input,
 .formulario textarea {
   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #2f2f44;
+  color: white;
 }
 
 .formulario button {
   padding: 10px;
   cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff9800;
+  color: white;
 }
