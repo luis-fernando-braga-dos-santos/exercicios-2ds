@@ -1,4 +1,15 @@
 .formulario {
-color: aqua;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+.formulario input,
+.formulario textarea {
+  padding: 10px;
+}
+
+.formulario button {
+  padding: 10px;
+  cursor: pointer;
+}
