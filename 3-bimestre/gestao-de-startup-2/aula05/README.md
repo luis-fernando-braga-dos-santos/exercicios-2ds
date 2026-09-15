@@ -206,6 +206,17 @@ _
 Para cada situação, indique qual reunião seria mais adequada:
 
 1. A equipe precisa decidir quais tarefas serão realizadas na próxima Sprint.
+
+Planning, porque é nessa reunião que a equipe decide o que vai fazer na próxima Sprint.
+
 2. Um desenvolvedor quer informar que está bloqueado por um problema.
+
+Daily, porque ele pode falar para a equipe que está com um problema e precisa de ajuda.
+
 3. A equipe terminou uma Sprint e precisa apresentar o que desenvolveu.
+
+Review, porque nessa reunião a equipe mostra o que foi feito durante a Sprint.
+
 4. A equipe percebeu que houve problemas de comunicação durante a Sprint e quer descobrir como melhorar.
+
+Retrospectiva, porque é nessa reunião que a equipe conversa sobre o que deu errado e o que pode melhorar.

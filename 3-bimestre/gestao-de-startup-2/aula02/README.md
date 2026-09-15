@@ -128,6 +128,17 @@ _
 Classifique cada situação como **Produto** ou **Projeto**.
 
 1. Desenvolvimento de uma nova funcionalidade para um aplicativo.
+
+Porque é algo que a equipe vai fazer para melhorar o aplicativo e depois que terminar essa tarefa, o projeto acaba.
+
 2. Plataforma de cursos utilizada por milhares de alunos.
+
+Porque é uma plataforma que as pessoas usam continuamente para fazer os cursos.
+
 3. Construção de um sistema para uma empresa.
+
+Porque existe um trabalho para criar o sistema e, quando ele estiver pronto, esse trabalho termina.
+
 4. Aplicativo de delivery utilizado diariamente pelos clientes.
+
+Porque o aplicativo continua sendo usado pelos clientes e pode receber novas melhorias e funções.

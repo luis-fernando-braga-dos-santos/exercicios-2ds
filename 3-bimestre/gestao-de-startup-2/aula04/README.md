@@ -204,5 +204,13 @@ Você acredita que três desses campos não são necessários e podem tornar o c
 Responda:
 
 1. Você simplesmente implementaria os cinco campos?
+
+Não. Eu primeiro falaria com a equipe para entender se os cinco campos são mesmo necessários.
+
 2. O que deveria fazer antes?
+
+Eu explicaria que acho que alguns campos não são necessários e tentaria entender o motivo de colocar eles no cadastro.
+
 3. Como poderia apresentar sua preocupação à equipe?
+
+Eu falaria que três campos podem deixar o cadastro mais demorado e perguntaria se podemos deixar só os campos mais importantes.
