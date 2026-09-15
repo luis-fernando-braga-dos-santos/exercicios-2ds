@@ -219,5 +219,13 @@ Ela possui um protótipo simples desenhado em papel.
 Crie:
 
 1. Uma tarefa que será dada ao usuário.
+
+"Olha para esse desenho e me mostra como você faria para marcar que tem um dever de História para entregar no dia 25."
+
 2. Duas coisas que a equipe deverá observar.
+
+Ver se a pessoa acha o botão de adicionar rápido ou se ela fica perdida caçando onde apertar.Reparar na cara da pessoa para ver se ela faz cara de dúvida ou se parece que travou em alguma parte.
+
 3. Uma pergunta para fazer depois do teste.
+
+"O que você achou mais chato ou mais difícil de entender nessa folha?"

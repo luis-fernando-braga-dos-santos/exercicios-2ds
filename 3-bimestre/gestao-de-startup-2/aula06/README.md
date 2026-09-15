@@ -241,12 +241,14 @@ A equipe consegue realizar apenas **três tarefas** nesta Sprint.
 
 1. Quais três tarefas você escolheria?
 
-1)corrigir um erro que impede usuários de fazer login;
+1)corrigir um erro que impede usuários de fazer login.
 2)corrigir um erro que causa perda de dados.
-3)criar uma nova animação para a página inicial;
+3)criar uma nova animação para a página inicial.
 
 2. Por que elas devem ter prioridade?
 
-a 1 e 2 são urgentes pois podem atrapalhar e impedir a entrada de usuarios e a 3 e porque ela e para uma animação mais dificil
+"A 1 e a 2 são urgentes, pois podem atrapalhar e impedir a entrada de usuários, e a 3 é porque ela é para uma animação mais difícil."
 
 3. Qual seria um possível objetivo para essa Sprint?
+
+corrigir um erro que impede usuários de fazer login.

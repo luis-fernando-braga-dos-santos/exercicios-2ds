@@ -314,6 +314,8 @@ A equipe possui uma versão estável, uma experiência adequada para os usuário
 
 Identifique cada uma:
 
-- MVP
-- MLP
-- MMP
+- MVP:Situação A: MVP (Porque é o mais básico de todos, só para ver se funciona).
+
+- MLP:Situação B: MLP (Porque além de funcionar, eles deixaram o visual bonitinho e gostoso de usar).
+
+- MMP:Situação C: MMP (Porque esse já está completinho e pronto para ser vendido no mercado).
