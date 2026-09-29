@@ -6,6 +6,7 @@ class Usuario {
     Usuario.quantidade++
   }
 
+  
   static quantidadeUsuarios() {
     return Usuario.quantidade
   }
