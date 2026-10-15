@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "test": "jest",
+    "start": "node servidor.js",
+    "dev": "node --watch --env-file=.env servidor.js"
+  }
+}
