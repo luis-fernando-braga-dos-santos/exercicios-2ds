@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f5ef" />
+    <title>Componers | Pesquisa NPS</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #202820;
+        --muted: #657064;
+        --paper: #f3f5ef;
+        --surface: #fffefa;
+        --line: #d9dfd3;
+        --green: #285c43;
+        --green-light: #e0ede2;
+        --orange: #c7693d;
+        --orange-light: #f8e8df;
+        --yellow: #f2c66d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image: radial-gradient(#cbd4c7 0.7px, transparent 0.7px);
+        background-size: 18px 18px;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100% - 32px, 760px);
+        margin: 0 auto;
+        padding: 44px 0 56px;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--green);
+        font-size: 0.95rem;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--yellow);
+        color: var(--ink);
+        font-size: 1rem;
+      }
+
+      .intro {
+        padding: 30px clamp(22px, 6vw, 52px) 32px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        animation: rise-in 500ms ease-out both;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--orange);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 590px;
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.25rem, 7vw, 4rem);
+        font-weight: 500;
+        line-height: 1;
+      }
+
+      .description {
+        max-width: 550px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .survey {
+        margin-top: 18px;
+        padding: 28px clamp(20px, 5vw, 40px) 30px;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fffefa;
+        animation: rise-in 550ms 80ms ease-out both;
+      }
+
+      .survey h2 {
+        max-width: 600px;
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.4rem, 4vw, 1.85rem);
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      .rating-hint {
+        margin: 10px 0 16px;
+        color: #d5e3d7;
+        font-size: 0.85rem;
+      }
+
+      .ratings {
+        display: grid;
+        grid-template-columns: repeat(11, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .rating {
+        min-width: 0;
+        aspect-ratio: 1;
+        border: 1px solid #759080;
+        border-radius: 6px;
+        background: transparent;
+        color: #fffefa;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 700;
+        transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
+      }
+
+      .rating:hover {
+        transform: translateY(-2px);
+        border-color: var(--yellow);
+      }
+
+      .rating[aria-pressed="true"] {
+        border-color: var(--yellow);
+        background: var(--yellow);
+        color: var(--ink);
+      }
+
+      .rating:focus-visible,
+      .submit:focus-visible,
+      .clear:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+      }
+
+      .rating-ends {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        color: #d5e3d7;
+        font-size: 0.75rem;
+      }
+
+      .survey-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .submit {
+        min-height: 44px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 6px;
+        background: var(--yellow);
+        color: var(--ink);
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .submit:hover {
+        background: #f7d58f;
+      }
+
+      .message {
+        min-height: 1.2em;
+        margin: 0;
+        color: #f4ead1;
+        font-size: 0.85rem;
+      }
+
+      .results {
+        margin-top: 32px;
+        animation: rise-in 600ms 150ms ease-out both;
+      }
+
+      .results-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #bfc9bb;
+      }
+
+      .results-heading h2 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .total {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .stat {
+        min-height: 102px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .stat-label {
+        display: block;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .stat-value {
+        display: block;
+        margin-top: 9px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .promoters .stat-value {
+        color: var(--green);
+      }
+
+      .neutrals .stat-value {
+        color: #9a6b1e;
+      }
+
+      .detractors .stat-value {
+        color: var(--orange);
+      }
+
+      .score-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 12px;
+        padding: 19px 20px;
+        border-radius: 8px;
+        background: var(--orange-light);
+      }
+
+      .score-copy strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .score-copy span {
+        display: block;
+        margin-top: 4px;
+        color: #725447;
+        font-size: 0.8rem;
+      }
+
+      .score {
+        min-width: 72px;
+        color: #984b2c;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2.5rem;
+        line-height: 1;
+        text-align: right;
+      }
+
+      .results-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 12px;
+      }
+
+      .clear {
+        padding: 8px 0 8px 8px;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 0.8rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      @keyframes rise-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .page {
+          padding-top: 28px;
+        }
+
+        .topline {
+          align-items: flex-start;
+          font-size: 0.68rem;
+        }
+
+        .ratings {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .rating {
+          aspect-ratio: 1.2;
+        }
+
+        .stats {
+          gap: 7px;
+        }
+
+        .stat {
+          min-height: 92px;
+          padding: 12px 9px;
+        }
+
+        .stat-label {
+          font-size: 0.72rem;
+        }
+
+        .score-row {
+          padding: 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topline">
+        <span class="brand"><span class="brand-mark" aria-hidden="true">C</span> Componers</span>
+        <span>Pesquisa de recomendação</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Sua opinião ajuda a gente a melhorar</p>
+        <h1 id="page-title">Componers</h1>
+        <p class="description">O Componers ajuda músicos a criar e organizar composições musicais em um só lugar.</p>
+      </section>
+
+      <section class="survey" aria-labelledby="question-title">
+        <h2 id="question-title">De 0 a 10, quanto você recomendaria este app para um amigo?</h2>
+        <p class="rating-hint">Escolha uma nota para registrar sua resposta.</p>
+        <div class="ratings" role="group" aria-label="Nota de 0 a 10">
+          <button class="rating" type="button" aria-pressed="false" data-score="0">0</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="1">1</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="2">2</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="3">3</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="4">4</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="5">5</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="6">6</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="7">7</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="8">8</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="9">9</button>
+          <button class="rating" type="button" aria-pressed="false" data-score="10">10</button>
+        </div>
+        <div class="rating-ends" aria-hidden="true"><span>Não recomendaria</span><span>Recomendaria muito</span></div>
+        <div class="survey-actions">
+          <button class="submit" id="submit-rating" type="button">Enviar nota</button>
+          <p class="message" id="message" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="results-heading">
+          <h2 id="results-title">Resultado da pesquisa</h2>
+          <p class="total">Respostas: <strong id="total-count">0</strong></p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <div class="stat promoters">
+            <span class="stat-label">Promotores · notas 9 e 10</span>
+            <strong class="stat-value" id="promoter-count">0</strong>
+          </div>
+          <div class="stat neutrals">
+            <span class="stat-label">Neutros · notas 7 e 8</span>
+            <strong class="stat-value" id="neutral-count">0</strong>
+          </div>
+          <div class="stat detractors">
+            <span class="stat-label">Detratores · notas 0 a 6</span>
+            <strong class="stat-value" id="detractor-count">0</strong>
+          </div>
+        </div>
+        <div class="score-row">
+          <div class="score-copy">
+            <strong>NPS final</strong>
+            <span>Promotores (%) menos detratores (%)</span>
+          </div>
+          <strong class="score" id="nps-score">--</strong>
+        </div>
+        <div class="results-footer">
+          <button class="clear" id="clear-responses" type="button">Limpar respostas</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "componers-nps-responses";
+      const ratingButtons = document.querySelectorAll(".rating");
+      const message = document.getElementById("message");
+      let selectedScore = null;
+      let responses = loadResponses();
+
+      function loadResponses() {
+        try {
+          const savedResponses = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+          return Array.isArray(savedResponses)
+            ? savedResponses.filter((score) => Number.isInteger(score) && score >= 0 && score <= 10)
+            : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveResponses() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(responses));
+          return true;
+        } catch {
+          message.textContent = "Não foi possível salvar. Verifique o armazenamento do navegador.";
+          return false;
+        }
+      }
+
+      function renderResults() {
+        const promoters = responses.filter((score) => score >= 9).length;
+        const neutrals = responses.filter((score) => score >= 7 && score <= 8).length;
+        const detractors = responses.filter((score) => score <= 6).length;
+        const total = responses.length;
+        const nps = total === 0
+          ? "--"
+          : Math.round(((promoters - detractors) / total) * 100);
+
+        document.getElementById("total-count").textContent = total;
+        document.getElementById("promoter-count").textContent = promoters;
+        document.getElementById("neutral-count").textContent = neutrals;
+        document.getElementById("detractor-count").textContent = detractors;
+        document.getElementById("nps-score").textContent = nps;
+      }
+
+      ratingButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedScore = Number(button.dataset.score);
+          ratingButtons.forEach((rating) => {
+            rating.setAttribute("aria-pressed", String(rating === button));
+          });
+          message.textContent = `Nota selecionada: ${selectedScore}.`;
+        });
+      });
+
+      document.getElementById("submit-rating").addEventListener("click", () => {
+        if (selectedScore === null) {
+          message.textContent = "Escolha uma nota antes de enviar.";
+          return;
+        }
+
+        responses.push(selectedScore);
+        if (!saveResponses()) {
+          responses.pop();
+          return;
+        }
+
+        renderResults();
+        message.textContent = "Resposta registrada. Obrigado!";
+        selectedScore = null;
+        ratingButtons.forEach((rating) => rating.setAttribute("aria-pressed", "false"));
+      });
+
+      document.getElementById("clear-responses").addEventListener("click", () => {
+        responses = [];
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch {
+          message.textContent = "Não foi possível limpar o armazenamento do navegador.";
+          return;
+        }
+
+        renderResults();
+        message.textContent = "Respostas apagadas.";
+      });
+
+      renderResults();
+    </script>
+  </body>
+</html>

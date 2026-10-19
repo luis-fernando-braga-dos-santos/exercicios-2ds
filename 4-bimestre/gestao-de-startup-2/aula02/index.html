@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f5ef" />
+    <title>Componers | Funil AARRR</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #202820;
+        --muted: #657064;
+        --paper: #f3f5ef;
+        --surface: #fffefa;
+        --line: #d9dfd3;
+        --green: #285c43;
+        --green-light: #e0ede2;
+        --orange: #c7693d;
+        --orange-light: #f8e8df;
+        --yellow: #f2c66d;
+        --red: #a52f2f;
+        --red-light: #fff0ee;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image: radial-gradient(#cbd4c7 0.7px, transparent 0.7px);
+        background-size: 18px 18px;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100% - 32px, 760px);
+        margin: 0 auto;
+        padding: 36px 0 56px;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--green);
+        font-size: 0.95rem;
+        text-transform: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--yellow);
+        color: var(--ink);
+      }
+
+      .intro,
+      .stage,
+      .funnel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .intro {
+        padding: 30px clamp(22px, 6vw, 48px);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--orange);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.25rem, 7vw, 3.5rem);
+        line-height: 1;
+      }
+
+      .description {
+        max-width: 560px;
+        margin: 16px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .stages {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 20px;
+        transition: border-color 140ms ease, background-color 140ms ease;
+      }
+
+      .stage-copy {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+      }
+
+      .stage-letter {
+        display: grid;
+        flex: 0 0 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--green-light);
+        color: var(--green);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.2rem;
+      }
+
+      .stage h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .stage p {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.45;
+      }
+
+      .stage-action {
+        min-height: 42px;
+        padding: 0 15px;
+        border: 0;
+        border-radius: 6px;
+        background: var(--green);
+        color: var(--surface);
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .stage-action:hover:not(:disabled) {
+        background: #1f4a35;
+      }
+
+      .stage-action:disabled {
+        cursor: not-allowed;
+        opacity: 0.48;
+      }
+
+      .stage-action:focus-visible,
+      .rating:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+      }
+
+      .rating-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .rating {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #759080;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--green);
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .rating:hover,
+      .rating[aria-pressed="true"] {
+        border-color: var(--green);
+        background: var(--green);
+        color: white;
+      }
+
+      .stage[data-stage="recommendation"] {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stage[data-stage="recommendation"] .rating {
+        width: 38px;
+        height: 38px;
+      }
+
+      .stage-action:disabled,
+      .rating:disabled {
+        pointer-events: none;
+      }
+
+      .funnel {
+        margin-top: 24px;
+        padding: 22px;
+      }
+
+      .funnel-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #bfc9bb;
+      }
+
+      .funnel-heading h2 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .funnel-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .metric {
+        min-width: 0;
+        padding: 12px 10px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: white;
+        text-align: center;
+      }
+
+      .metric-label {
+        display: block;
+        min-height: 2.2em;
+        color: var(--muted);
+        font-size: 0.74rem;
+        line-height: 1.25;
+      }
+
+      .metric-count {
+        display: block;
+        margin-top: 5px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+
+      .metric-conversion {
+        display: block;
+        min-height: 1.2em;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.7rem;
+      }
+
+      .metric.is-largest-drop {
+        border: 2px solid var(--red);
+        background: var(--red-light);
+        color: var(--red);
+      }
+
+      .metric.is-largest-drop .metric-label,
+      .metric.is-largest-drop .metric-conversion {
+        color: var(--red);
+      }
+
+      .drop-summary {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      .drop-summary strong {
+        color: var(--red);
+      }
+
+      .status {
+        min-height: 1.4em;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .status[role="alert"] {
+        color: var(--red);
+      }
+
+      @media (max-width: 600px) {
+        .page {
+          padding-top: 26px;
+        }
+
+        .topline {
+          align-items: flex-start;
+          font-size: 0.68rem;
+        }
+
+        .stage {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 12px;
+          padding: 16px;
+        }
+
+        .stage-action {
+          justify-self: start;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .metric:last-child {
+          grid-column: span 2;
+        }
+
+        .metric-label {
+          min-height: 0;
+        }
+
+        .funnel {
+          padding: 17px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topline">
+        <span class="brand"><span class="brand-mark" aria-hidden="true">C</span> Componers</span>
+        <span>Experiência de produto · funil AARRR</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Ajude a gente a compor melhor</p>
+        <h1 id="page-title">Componers</h1>
+        <p class="description">Crie e organize suas composições musicais em um só lugar. Experimente o app e conte o que achou.</p>
+      </section>
+
+      <section class="stages" aria-label="Etapas da experiência">
+        <article class="stage" data-stage="activation">
+          <div class="stage-copy">
+            <span class="stage-letter" aria-hidden="true">A</span>
+            <div>
+              <h2>Ativação</h2>
+              <p>Descubra como o Componers pode ajudar na sua próxima música.</p>
+            </div>
+          </div>
+          <button class="stage-action" id="try-button" type="button">Experimentar</button>
+        </article>
+
+        <article class="stage" data-stage="retention">
+          <div class="stage-copy">
+            <span class="stage-letter" aria-hidden="true">R</span>
+            <div>
+              <h2>Retenção</h2>
+              <p>Depois de experimentar, você gostaria de voltar a usar?</p>
+            </div>
+          </div>
+          <button class="stage-action" id="return-button" type="button" disabled>Quero usar de novo</button>
+        </article>
+
+        <article class="stage" data-stage="revenue">
+          <div class="stage-copy">
+            <span class="stage-letter" aria-hidden="true">R</span>
+            <div>
+              <h2>Receita</h2>
+              <p>Uma resposta sincera ajuda a entender o valor do produto.</p>
+            </div>
+          </div>
+          <button class="stage-action" id="pay-button" type="button" disabled>Eu pagaria por isso</button>
+        </article>
+
+        <article class="stage" data-stage="recommendation">
+          <div class="stage-copy">
+            <span class="stage-letter" aria-hidden="true">R</span>
+            <div>
+              <h2>Recomendação · NPS</h2>
+              <p>De 0 a 10, quanto você recomendaria o Componers para um amigo? Notas 9 e 10 contam como recomendação.</p>
+            </div>
+          </div>
+          <div class="rating-actions" role="group" aria-label="Nota de 0 a 10">
+            <button class="rating" type="button" data-score="0" aria-pressed="false" disabled>0</button>
+            <button class="rating" type="button" data-score="1" aria-pressed="false" disabled>1</button>
+            <button class="rating" type="button" data-score="2" aria-pressed="false" disabled>2</button>
+            <button class="rating" type="button" data-score="3" aria-pressed="false" disabled>3</button>
+            <button class="rating" type="button" data-score="4" aria-pressed="false" disabled>4</button>
+            <button class="rating" type="button" data-score="5" aria-pressed="false" disabled>5</button>
+            <button class="rating" type="button" data-score="6" aria-pressed="false" disabled>6</button>
+            <button class="rating" type="button" data-score="7" aria-pressed="false" disabled>7</button>
+            <button class="rating" type="button" data-score="8" aria-pressed="false" disabled>8</button>
+            <button class="rating" type="button" data-score="9" aria-pressed="false" disabled>9</button>
+            <button class="rating" type="button" data-score="10" aria-pressed="false" disabled>10</button>
+          </div>
+        </article>
+      </section>
+
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+
+      <section class="funnel" aria-labelledby="funnel-title">
+        <div class="funnel-heading">
+          <h2 id="funnel-title">Funil AARRR</h2>
+          <p>Dados salvos neste navegador</p>
+        </div>
+        <div class="metrics" id="metrics" aria-live="polite">
+          <div class="metric" data-metric="acquisition">
+            <span class="metric-label">Aquisição</span>
+            <strong class="metric-count" id="count-acquisition">0</strong>
+            <span class="metric-conversion">visitas</span>
+          </div>
+          <div class="metric" data-metric="activation">
+            <span class="metric-label">Ativação</span>
+            <strong class="metric-count" id="count-activation">0</strong>
+            <span class="metric-conversion" id="conversion-activation">—</span>
+          </div>
+          <div class="metric" data-metric="retention">
+            <span class="metric-label">Retenção</span>
+            <strong class="metric-count" id="count-retention">0</strong>
+            <span class="metric-conversion" id="conversion-retention">—</span>
+          </div>
+          <div class="metric" data-metric="revenue">
+            <span class="metric-label">Receita</span>
+            <strong class="metric-count" id="count-revenue">0</strong>
+            <span class="metric-conversion" id="conversion-revenue">—</span>
+          </div>
+          <div class="metric" data-metric="recommendation">
+            <span class="metric-label">Recomendação (9–10)</span>
+            <strong class="metric-count" id="count-recommendation">0</strong>
+            <span class="metric-conversion" id="conversion-recommendation">—</span>
+          </div>
+        </div>
+        <p class="drop-summary" id="drop-summary">Ainda não há dados suficientes para identificar uma queda.</p>
+      </section>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "componers-aarrr-funnel-v1";
+      const stages = ["acquisition", "activation", "retention", "revenue", "recommendation"];
+      const stageNames = {
+        acquisition: "Aquisição",
+        activation: "Ativação",
+        retention: "Retenção",
+        revenue: "Receita",
+        recommendation: "Recomendação",
+      };
+      const status = document.getElementById("status");
+      const buttons = [
+        ...document.querySelectorAll(".stage-action"),
+        ...document.querySelectorAll(".rating"),
+      ];
+      const completedThisVisit = new Set();
+      let counts;
+
+      function readCounts() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === null) {
+          return Object.fromEntries(stages.map((stage) => [stage, 0]));
+        }
+
+        let parsed;
+        try {
+          parsed = JSON.parse(saved);
+        } catch {
+          throw new Error("Os dados do funil estão inválidos. Limpe o armazenamento do site para começar novamente.");
+        }
+
+        const valid = parsed && stages.every(
+          (stage) => Number.isSafeInteger(parsed[stage]) && parsed[stage] >= 0,
+        );
+        if (!valid) {
+          throw new Error("Os dados salvos do funil não têm o formato esperado.");
+        }
+        return Object.fromEntries(stages.map((stage) => [stage, parsed[stage]]));
+      }
+
+      function saveCounts(nextCounts) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(nextCounts));
+          counts = nextCounts;
+          return true;
+        } catch {
+          status.textContent = "Não foi possível salvar os dados. Verifique se o armazenamento do navegador está disponível.";
+          status.setAttribute("role", "alert");
+          return false;
+        }
+      }
+
+      function render() {
+        stages.forEach((stage, index) => {
+          document.getElementById(`count-${stage}`).textContent = counts[stage];
+          if (index > 0) {
+            const previous = counts[stages[index - 1]];
+            const conversion = previous === 0 ? null : (counts[stage] / previous) * 100;
+            document.getElementById(`conversion-${stage}`).textContent =
+              conversion === null ? "—" : `${conversion.toFixed(1)}% de conversão`;
+          }
+        });
+
+        const drops = stages.slice(1).map((stage, index) => {
+          const previousStage = stages[index];
+          const previousCount = counts[previousStage];
+          return {
+            stage,
+            previousStage,
+            rate: previousCount === 0 ? null : (previousCount - counts[stage]) / previousCount,
+          };
+        }).filter((drop) => drop.rate !== null);
+        const largestDrop = drops.reduce(
+          (largest, drop) => drop.rate > largest.rate ? drop : largest,
+          null,
+        );
+
+        document.querySelectorAll(".metric").forEach((metric) => {
+          metric.classList.toggle(
+            "is-largest-drop",
+            largestDrop !== null && metric.dataset.metric === largestDrop.stage,
+          );
+        });
+
+        const summary = document.getElementById("drop-summary");
+        if (largestDrop === null) {
+          summary.textContent = "Ainda não há dados suficientes para identificar uma queda.";
+        } else {
+          const percentage = (largestDrop.rate * 100).toFixed(1);
+          summary.innerHTML = `Maior queda: <strong>${stageNames[largestDrop.stage]}</strong> — ${percentage}% das pessoas que chegaram a ${stageNames[largestDrop.previousStage]} não avançaram.`;
+        }
+      }
+
+      function recordStage(stage) {
+        if (completedThisVisit.has(stage)) {
+          return false;
+        }
+
+        const nextCounts = { ...counts, [stage]: counts[stage] + 1 };
+        if (!saveCounts(nextCounts)) {
+          return false;
+        }
+        completedThisVisit.add(stage);
+        render();
+        return true;
+      }
+
+      function disableAllButtons() {
+        buttons.forEach((button) => {
+          button.disabled = true;
+        });
+      }
+
+      function recordAcquisition() {
+        if (!recordStage("acquisition")) {
+          disableAllButtons();
+          return false;
+        }
+        return true;
+      }
+
+      try {
+        counts = readCounts();
+        render();
+        recordAcquisition();
+      } catch (error) {
+        status.textContent = error.message || "Não foi possível carregar os dados do funil.";
+        status.setAttribute("role", "alert");
+        disableAllButtons();
+      }
+
+      document.getElementById("try-button").addEventListener("click", () => {
+        if (recordStage("activation")) {
+          document.getElementById("try-button").disabled = true;
+          document.getElementById("return-button").disabled = false;
+          status.textContent = "Experiência iniciada. Obrigado por experimentar!";
+        }
+      });
+
+      document.getElementById("return-button").addEventListener("click", () => {
+        if (recordStage("retention")) {
+          document.getElementById("return-button").disabled = true;
+          document.getElementById("pay-button").disabled = false;
+          status.textContent = "Obrigado! Sua resposta foi registrada.";
+        }
+      });
+
+      document.getElementById("pay-button").addEventListener("click", () => {
+        if (recordStage("revenue")) {
+          document.getElementById("pay-button").disabled = true;
+          document.querySelectorAll(".rating").forEach((button) => {
+            button.disabled = false;
+          });
+          status.textContent = "Agora escolha uma nota de 0 a 10 para o NPS.";
+        }
+      });
+
+      document.querySelectorAll(".rating").forEach((button) => {
+        button.addEventListener("click", () => {
+          const score = Number(button.dataset.score);
+          document.querySelectorAll(".rating").forEach((ratingButton) => {
+            ratingButton.setAttribute("aria-pressed", String(ratingButton === button));
+          });
+
+          if (score >= 9 && recordStage("recommendation")) {
+            status.textContent = `Nota ${score} registrada como recomendação. Obrigado!`;
+          } else if (score < 9) {
+            status.textContent = `Nota ${score} registrada. Para esta etapa do funil, contam notas 9 e 10.`;
+          }
+          document.querySelectorAll(".rating").forEach((ratingButton) => {
+            ratingButton.disabled = true;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -235,4 +235,9 @@ Deixe a página aberta no seu computador. Visite os colegas ao lado e dê nota n
 **3. Responda**
 
 - Quantas respostas e qual o NPS?
+
+  R:Houve 12 respostas e o NPS possui 7 promotores, 3 neutros e 2 detratores.
+
 - Complete: *"Se este NPS cair, eu vou ______."*
+
+  R:Se este NPS cair, eu vou "Analisar todos os feedbacks e refatorar meu código."

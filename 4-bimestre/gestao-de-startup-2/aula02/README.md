@@ -212,4 +212,9 @@ Troque de computador com os colegas ao lado. Cada um segue o funil do outro **s�
 **3. Decida**
 
 - **Decisão:** o que você mudaria no app.
+
+  R:Colocaríamos uma opção de playlist para o usuário poder fazer sua playlist de músicas favoritas.
+
 - **Motivo:** a maior queda, com o número (ex.: *"só 2 de 6 pessoas clicaram em Experimentar"*).
+
+  R:A menor nota registrada do site no seu primeiro lançamento foi de 4 a 6. A maioria dos usuários já saía após testá-lo,  então decidimos colocar essa opção para prender mais os usuários.
