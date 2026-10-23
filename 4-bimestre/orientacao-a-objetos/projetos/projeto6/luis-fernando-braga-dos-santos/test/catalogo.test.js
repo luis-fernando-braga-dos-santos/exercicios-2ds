@@ -6,20 +6,20 @@ test("GET /api/pecas deve responder 200 com o catalogo completo", async () => {
 
     expect(res.status).toBe(200)
     expect(res.body).toEqual([
-    { id: 1, titulo: "A Visita", genero: "drama", preco: 40, emCartaz: true },
-    { id: 2, titulo: "O Noviço", genero: "comedia", preco: 35, emCartaz: true },
-    { id: 3, titulo: "Hamlet", genero: "tragedia", preco: 60, emCartaz: false }
-])
+        { id: 1, titulo: "A Visita", genero: "drama", preco: 40, emCartaz: true },
+        { id: 2, titulo: "O Noviço", genero: "comedia", preco: 35, emCartaz: true },
+        { id: 3, titulo: "Hamlet", genero: "tragedia", preco: 60, emCartaz: false }
+    ])
 })
 
-test("GET /api/pecas/em-cartaz deve devolver so os pecas com emCartaz true", async () => {
+test("GET /api/pecas/em-cartaz deve devolver so as pecas com emCartaz true", async () => {
     const res = await request(app).get("/api/pecas/em-cartaz")
 
     expect(res.status).toBe(200)
     expect(res.body).toEqual([
-    { id: 1, titulo: "A Visita", genero: "drama", preco: 40, emCartaz: true },
-    { id: 2, titulo: "O Noviço", genero: "comedia", preco: 35, emCartaz: true }
-])
+        { id: 1, titulo: "A Visita", genero: "drama", preco: 40, emCartaz: true },
+        { id: 2, titulo: "O Noviço", genero: "comedia", preco: 35, emCartaz: true }
+    ])
 })
 
 test("GET /api/pecas/total deve devolver o total de pecas", async () => {
@@ -41,9 +41,9 @@ test("GET /api/espectadores deve responder 200 com os espectadores", async () =>
 
     expect(res.status).toBe(200)
     expect(res.body).toEqual([
-    { id: 1, nome: "Ana", tipo: "meia" },
-    { id: 2, nome: "Bruno", tipo: "inteira" }
-])
+        { id: 1, nome: "Ana", tipo: "meia" },
+        { id: 2, nome: "Bruno", tipo: "inteira" }
+    ])
 })
 
 test("GET /api/espectadores/total deve devolver o total de espectadores", async () => {
