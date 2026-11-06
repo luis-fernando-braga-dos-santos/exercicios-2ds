@@ -15,7 +15,7 @@ app.use((req, res) => {
 
 app.use((erro, req, res, next) => {
   res.status(erro.status || 500).json({
-    erro: erro.message || "Erro interno do servidor"
+    erro: erro.message || "Erro interno do  servidor"
   })
 })
 
