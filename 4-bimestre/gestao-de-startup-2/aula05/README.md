@@ -284,4 +284,11 @@ Confira: com os dois itens do exemplo da aula, o RICE precisa dar **300** e **3,
 **3. Responda**
 
 - Quais os 3 primeiros itens e o RICE de cada um?
+
+1-Corrigir a reprodução das músicas: RICE 150.
+2-Criar cadastro de usuários: RICE 60.
+3-Criar playlists: RICE 46,67.
+
 - A ordem do RICE mudou alguma coisa que você tinha planejado?
+
+Sim. Eu pretendia começar criando playlists e adicionando novas funcionalidades ao aplicativo, mas percebi que corrigir a reprodução das músicas é mais importante. Por isso, decidi priorizar a correção dos problemas antes de desenvolver novas funcionalidades.
