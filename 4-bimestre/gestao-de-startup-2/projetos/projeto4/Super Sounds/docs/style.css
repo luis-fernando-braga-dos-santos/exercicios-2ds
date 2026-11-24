@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10101c;
+    color: white;
+    min-height: 100vh
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: #19192b;
+    border-bottom: 2px solid #8b5cf6
+}
+
+header h1 {
+    color: #a78bfa;
+    font-size: 35px
+}
+
+header p {
+    margin-top: 10px;
+    color: #bbb
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 25px
+}
+
+.welcome {
+    text-align: center;
+    margin: 20px 0 30px
+}
+
+.welcome h2 {
+    color: #c4b5fd;
+    margin-bottom: 10px
+}
+
+.player, .library {
+    background: #1c1c30;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px #0005
+}
+
+.cover {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px
+}
+
+.player h2 {
+    margin-bottom: 8px
+}
+
+.player p {
+    color: #aaa
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+    font-size: 12px
+}
+
+#progress {
+    flex: 1;
+    accent-color: #a78bfa;
+    cursor: pointer
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px
+}
+
+.controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer
+}
+
+.controls button:hover {
+    color: #a78bfa
+}
+
+.controls .play-button {
+    background: #8b5cf6;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px
+}
+
+.play-button:hover {
+    background: #7c3aed
+}
+
+.volume {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px
+}
+
+#volume {
+    accent-color: #a78bfa;
+    width: 120px
+}
+
+.library h2 {
+    margin-bottom: 20px
+}
+
+#music-upload {
+    display: none
+}
+
+.upload-button {
+    display: inline-block;
+    background: #8b5cf6;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px
+}
+
+.upload-button:hover {
+    background: #7c3aed
+}
+
+#playlist {
+    list-style: none;
+    text-align: left
+}
+
+#playlist li {
+    padding: 15px;
+    background: #292940;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+#playlist li:hover {
+    background: #393953
+}
+
+#playlist li.active {
+    border: 1px solid #a78bfa;
+    color: #c4b5fd
+}
+
+.empty {
+    text-align: center;
+    color: #999;
+    cursor: default !important
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #888
+}
+
+button:focus-visible,
+input:focus-visible,
+.upload-button:focus-visible {
+    outline: 2px solid #c4b5fd;
+    outline-offset: 4px
+}
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 27px
+    }
+
+    .container {
+        padding: 15px
+    }
+
+    .player, .library {
+        padding: 18px
+    }
+}
