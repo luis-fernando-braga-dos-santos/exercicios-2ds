@@ -263,4 +263,13 @@ Confira: tente enviar só `"gente, não tá funcionando aqui, me ajuda"`. O sist
 **3. Responda**
 
 - O colega precisou perguntar algo? Se sim, o que faltava no pedido?
+
+R: Sim. Ele precisou perguntar qual era o arquivo com problema e qual erro aparecia quando tentava reproduzir as músicas.
+
 - Qual foi o feedback recebido e **uma coisa** que você vai mudar no próximo pedido?
+
+R: O colega disse que meu pedido estava bem organizado, mas precisava de mais informações sobre o código e sobre o erro para facilitar a identificação do problema.
+
+Uma coisa que vou mudar no próximo pedido:
+
+R: Vou explicar melhor o problema, informar o nome do arquivo, mostrar o erro que aparece e contar tudo o que já tentei fazer antes de pedir ajuda.

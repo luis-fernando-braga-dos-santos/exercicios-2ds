@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f5ef" />
+    <title>Componers | Pedido de ajuda</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #202820;
+        --muted: #657064;
+        --paper: #f3f5ef;
+        --surface: #fffefa;
+        --line: #d9dfd3;
+        --green: #285c43;
+        --green-light: #e0ede2;
+        --orange: #c7693d;
+        --yellow: #f2c66d;
+        --red: #a52f2f;
+        --red-light: #fff0ee;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        color: var(--ink);
+        background-color: var(--paper);
+        background-image: radial-gradient(#cbd4c7 0.7px, transparent 0.7px);
+        background-size: 18px 18px;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        width: min(100% - 32px, 760px);
+        margin: 0 auto;
+        padding: 36px 0 56px;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--green);
+        font-size: 0.95rem;
+        text-transform: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--yellow);
+        color: var(--ink);
+      }
+
+      .intro,
+      .help-form,
+      .result {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .intro {
+        padding: 30px clamp(22px, 6vw, 48px);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--orange);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.25rem, 7vw, 3.5rem);
+        line-height: 1;
+      }
+
+      .description {
+        max-width: 560px;
+        margin: 16px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .help-form {
+        display: grid;
+        gap: 19px;
+        margin-top: 16px;
+        padding: 24px clamp(20px, 5vw, 36px) 28px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      label {
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .hint {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+        line-height: 1.45;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 82px;
+        padding: 11px 12px;
+        border: 1px solid #aeb9aa;
+        border-radius: 6px;
+        background: white;
+        color: var(--ink);
+        line-height: 1.5;
+        resize: vertical;
+      }
+
+      textarea:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+      }
+
+      textarea[aria-invalid="true"] {
+        border-color: var(--red);
+      }
+
+      .field-error {
+        min-height: 1.1em;
+        margin: 0;
+        color: var(--red);
+        font-size: 0.8rem;
+      }
+
+      .form-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 18px;
+        margin-top: 1px;
+      }
+
+      .primary-button,
+      .copy-button {
+        min-height: 44px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 6px;
+        background: var(--green);
+        color: var(--surface);
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .primary-button:hover,
+      .copy-button:hover {
+        background: #1f4a35;
+      }
+
+      .status {
+        min-height: 1.3em;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .status[role="alert"] {
+        color: var(--red);
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 24px clamp(20px, 5vw, 36px);
+      }
+
+      .result h2 {
+        margin: 0;
+        font-size: 1.55rem;
+      }
+
+      .result-description {
+        margin: 8px 0 16px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .formatted-message {
+        overflow-wrap: anywhere;
+        margin: 0;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #f7f8f3;
+        font-family: inherit;
+        line-height: 1.6;
+        white-space: pre-wrap;
+      }
+
+      .copy-button {
+        margin-top: 14px;
+        background: var(--orange);
+      }
+
+      .copy-button:hover {
+        background: #a95331;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 520px) {
+        .page {
+          padding-top: 26px;
+        }
+
+        .topline {
+          align-items: flex-start;
+          font-size: 0.68rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topline">
+        <span class="brand"><span class="brand-mark" aria-hidden="true">C</span> Componers</span>
+        <span>Aprender também é pedir ajuda</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Um bom pedido ajuda alguém a ajudar você</p>
+        <h1 id="page-title">Pedido de ajuda</h1>
+        <p class="description">Conte o que você quer fazer, o que já aconteceu e quais tentativas fez. Depois, copie a mensagem e envie para um colega.</p>
+      </section>
+
+      <form class="help-form" id="help-form" novalidate>
+        <div class="field">
+          <label for="goal">O que quero fazer</label>
+          <p class="hint" id="goal-hint">Qual é o seu objetivo?</p>
+          <textarea id="goal" name="goal" required aria-describedby="goal-hint goal-error"></textarea>
+          <p class="field-error" id="goal-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="situation">O que está acontecendo</label>
+          <p class="hint" id="situation-hint">Descreva o problema e o resultado que você esperava.</p>
+          <textarea id="situation" name="situation" required aria-describedby="situation-hint situation-error"></textarea>
+          <p class="field-error" id="situation-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="location">Onde</label>
+          <p class="hint" id="location-hint">Em qual arquivo, tela, etapa ou atividade isso acontece?</p>
+          <textarea id="location" name="location" required aria-describedby="location-hint location-error"></textarea>
+          <p class="field-error" id="location-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="attempts">O que já tentei</label>
+          <p class="hint" id="attempts-hint">Conte suas tentativas com pelo menos 20 caracteres.</p>
+          <textarea id="attempts" name="attempts" required minlength="20" aria-describedby="attempts-hint attempts-error"></textarea>
+          <p class="field-error" id="attempts-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="request">O que preciso de você</label>
+          <p class="hint" id="request-hint">Que tipo de ajuda ou resposta seria útil?</p>
+          <textarea id="request" name="request" required aria-describedby="request-hint request-error"></textarea>
+          <p class="field-error" id="request-error"></p>
+        </div>
+
+        <div class="form-footer">
+          <button class="primary-button" type="submit">Montar pedido</button>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <section class="result" id="result" aria-labelledby="result-title" hidden>
+        <h2 id="result-title">Seu pedido está pronto</h2>
+        <p class="result-description">Leia a mensagem e copie para compartilhar com seu colega.</p>
+        <pre class="formatted-message" id="formatted-message"></pre>
+        <button class="copy-button" id="copy-button" type="button">Copiar mensagem</button>
+        <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("help-form");
+      const formStatus = document.getElementById("form-status");
+      const result = document.getElementById("result");
+      const formattedMessage = document.getElementById("formatted-message");
+      const copyStatus = document.getElementById("copy-status");
+
+      const fields = [
+        { id: "goal", label: "O que quero fazer" },
+        { id: "situation", label: "O que está acontecendo" },
+        { id: "location", label: "Onde" },
+        { id: "attempts", label: "O que já tentei" },
+        { id: "request", label: "O que preciso de você" },
+      ];
+
+      function validateField(field) {
+        const input = document.getElementById(field.id);
+        const error = document.getElementById(`${field.id}-error`);
+        const value = input.value.trim();
+        let errorMessage = "";
+
+        if (!value) {
+          errorMessage = "Preencha este campo.";
+        } else if (field.id === "attempts" && value.length < 20) {
+          errorMessage = "Conte o que tentou com pelo menos 20 caracteres.";
+        }
+
+        input.setAttribute("aria-invalid", String(Boolean(errorMessage)));
+        error.textContent = errorMessage;
+        return !errorMessage;
+      }
+
+      fields.forEach((field) => {
+        document.getElementById(field.id).addEventListener("input", () => {
+          validateField(field);
+        });
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const invalidFields = fields.filter((field) => !validateField(field));
+
+        if (invalidFields.length > 0) {
+          formStatus.textContent = "Revise os campos indicados antes de continuar.";
+          formStatus.setAttribute("role", "alert");
+          document.getElementById(invalidFields[0].id).focus();
+          result.hidden = true;
+          return;
+        }
+
+        const message = fields
+          .map((field) => `${field.label}:\n${document.getElementById(field.id).value.trim()}`)
+          .join("\n\n");
+
+        formattedMessage.textContent = `Pedido de ajuda\n\n${message}`;
+        result.hidden = false;
+        formStatus.textContent = "Pedido montado. Você já pode copiar a mensagem.";
+        formStatus.setAttribute("role", "status");
+        copyStatus.textContent = "";
+      });
+
+      async function copyText(text) {
+        if (navigator.clipboard?.writeText) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return;
+          } catch {
+            // Tenta a alternativa compatível com páginas abertas localmente.
+          }
+        }
+
+        const temporaryInput = document.createElement("textarea");
+        temporaryInput.value = text;
+        temporaryInput.setAttribute("readonly", "");
+        temporaryInput.style.position = "fixed";
+        temporaryInput.style.opacity = "0";
+        document.body.appendChild(temporaryInput);
+        temporaryInput.select();
+
+        let copied = false;
+        try {
+          copied = document.execCommand("copy");
+        } finally {
+          temporaryInput.remove();
+        }
+
+        if (!copied) {
+          throw new Error("O navegador não permitiu copiar a mensagem.");
+        }
+      }
+
+      document.getElementById("copy-button").addEventListener("click", async () => {
+        try {
+          await copyText(formattedMessage.textContent);
+          copyStatus.textContent = "Mensagem copiada! Agora é só compartilhar.";
+          copyStatus.setAttribute("role", "status");
+        } catch (error) {
+          copyStatus.textContent = error.message || "Não foi possível copiar. Selecione e copie a mensagem manualmente.";
+          copyStatus.setAttribute("role", "alert");
+        }
+      });
+    </script>
+  </body>
+</html>
